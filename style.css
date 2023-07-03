@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: coral;
+  display: grid;
+  place-content: center;
+  min-width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+}
+#clock {
+  background-color: white;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  position: relative;
+  border: 1px solid grey;
+  border-width: 5px;
+}
+@media screen and (max-width: 500px) {
+  #clock {
+    width: 180px;
+    height: 180px;
+  }
+}
+#clock.active::after {
+  background-color: white;
+}
+#clock::after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: bottom;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+.darkmode {
+  color: blue;
+  font-size: 25px;
+  border: 1px solid white;
+  background-color: black;
+  outline: 0;
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+  width: 50%;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 10px;
+  transition: all 1s ease-in-out;
+}
+.darkmode:hover {
+  background-color: aqua;
+  color: black;
+}
+h1 {
+  color: aqua;
+  text-align: center;
+  margin: auto;
+  font-size: 21px;
+}
+#clock.isactive #numbers label {
+  color: white;
+}
+#clock #numbers label {
+  position: absolute;
+  color: coral;
+  inset: 0;
+  text-align: center;
+  transform: rotate(calc(var(--s) * (360deg / 12)));
+}
+#clock #numbers label span {
+  font-size: 21px;
+  transform: rotate(calc(var(--s) * (-360deg / 12)));
+  display: block;
+}
+#hands {
+  width: 2px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+}
+#clock.change #hand-seconds {
+  background-color: white;
+}
+#clock.change #hand-minutes {
+  background-color: aqua;
+}
+#clock.change #hand-hours {
+  background-color: grey;
+}
+#hands #hand-seconds {
+  width: 1px;
+  height: 50%;
+  position: absolute;
+  top: 25%;
+  background-color: red;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  z-index: 10;
+  transform-origin: bottom;
+}
+#hands #hand-minutes {
+  width: 3px;
+  height: 35%;
+  top: 40%;
+  z-index: 10;
+  transform-origin: bottom;
+  position: absolute;
+  background-color: green;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+#hands #hand-hours {
+  width: 5px;
+  height: 25%;
+  top: 50%;
+  z-index: 10;
+  transform-origin: bottom;
+  position: absolute;
+  background-color: black;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
